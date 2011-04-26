@@ -4,6 +4,8 @@
 	<link rel="stylesheet" href="style.css" type="text/css" />
     <script src="http://openlayers.org/dev/OpenLayers.js "></script>
 	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script src="http://open.mapquestapi.com/sdk/js/v6.1.0/mqa.toolkit.js"></script>
+	<script type="text/javascript" src="basic.js"></script>
 	<script src="http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=tFZmGb3V34H2FsCFb54YfDEwk2ZicNMTYcKVAm6HXU3qF6UjvodrfRxFN_wT4Q0V"></script>
 	<script type="text/javascript">
 	
@@ -28,6 +30,7 @@
 		var map1, map2, map3, map4, map5; 
 		var osm,mapquest,road,aerial,hybrid, yahooLayer;
 		var options;
+		var wgscenter;
 
 
 
@@ -173,29 +176,48 @@
 			map4.setCenter(sphmr_center, this.getZoomForResolution(map1.getResolution()));
 			//map5.setCenter(newcenter, this.getZoomForResolution(map5.getResolution()));
 		}
+	
+	function recenter(wgscenter){
+			map5.setCenter(wgscenter,12);
+			var sphmr_center = wgscenter.transform(
+                    new OpenLayers.Projection("EPSG:4326"),map1.getProjectionObject());
+			map1.setCenter(sphmr_center,12);
+			
+	}
 
 	</script>
 </head>
     <body onload="init();">
-		<div id="geocoder">Search for location: fill in box here</div>
-		<ol id="keeper">
-			<div id="panel">panel</div>
-			<li class="item">
-			<div class="map" id="map1">OpenStreetMap</div>
+		<ol id="header" class="list">
+			<li id="Title">Compare-A-Map</li>
+			<li><div id="geocoder">
+			Search for location:<input type="text" name="location" id="loc"/>
+			<button id="find" onclick="doBasicSearchClick()">Find</button>
+			</form>
+				</div></li>
+			<li><div id="panel">panel</div></li>
+		</ol>
+		<ol id="keeper" class="list">
+			<li class="item">OpenStreetMap
+			<div class="map" id="map1"></div>
 			</li>
-			<li class="item">			
-			<div class="map" id="map2">Bing Maps</div>
+			<li class="item">Bing Maps
+			<div class="map" id="map2"></div>
 			</li>
-			<li class="item">			
-			<div class="map" id="map3">Mapquest OSM</div>
+			<li class="item">Mapquest OSM			
+			<div class="map" id="map3"></div>
 			</li>
-			<li class="item">			
-			<div class="map" id="map4">Google Maps</div>
+			<li class="item">Google Maps
+			<div class="map" id="map4"></div>
 			</li>
-			<li class="item">			
-			<div class="map" id="map5">Yahoo Maps</div>
+			<li class="item">Yahoo Maps
+			<div class="map" id="map5"></div>
 			</li>		
 		</ol>
+
+	<div id="divBasicResults"></div>
+	<div id="divBasicSearchResults" class="test"></div>
+
     </body>
 </html>
 

@@ -4,22 +4,42 @@
  */
 /*@import oldefaults.css*/
 
+.test{
+	clear:both;
+}
 .item {
 	float:left;
 	margin:4px;
 	background: black;
-    padding: 20px 20px 40px 20px;
+    padding: 20px 20px 20px 20px;
     color: white;
 }
 
 .map {
 	width:200px;
 	height:300px;
+	padding-top:5px;
+}
+
+#header li {
+	float:left;
+	padding: 4px 6px 4px 6px;
+}
+
+#geocoder {
+}
+
+#panel {
+}
+
+.list {
+	display:inline;
+	list-style-type:none;
 }
 
 #keeper {
-	display:inline;
-	list-style-type:none;
+	float:left;
+	margin-left: -38px;
 }
 
 /*TODO: move the attribution to below the map frame*/
