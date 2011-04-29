@@ -40,8 +40,6 @@
 		var wgscenter;
 		var test;
 
-
-
         function init(){
 			
 			master = {
@@ -161,22 +159,31 @@
 			
         }
 
-		function sync(){
-			if{}
-			else{}
-			var newcenter = this.getExtent().getCenterLonLat().transform(
+		function sync(test){
+			if(test==1){
+				var sphm_center = map5.getExtent().getCenterLonLat().transform(
+                    new OpenLayers.Projection("EPSG:4326"),map1.getProjectionObject());
+				var newcenter = map5.getExtent().getCenterLonLat();
+				}
+			else{
+				var sphm_center = this.getExtent().getCenterLonLat();
+				var newcenter = this.getExtent().getCenterLonLat().transform(
                     map1.getProjectionObject(),new OpenLayers.Projection("EPSG:4326"));
-			map1.setCenter(this.getExtent().getCenterLonLat(), this.getZoomForResolution(map1.getResolution()));			
-			map2.setCenter(this.getExtent().getCenterLonLat(), this.getZoomForResolution(map1.getResolution()));
-			map3.setCenter(this.getExtent().getCenterLonLat(), this.getZoomForResolution(map1.getResolution()));
-			map4.setCenter(this.getExtent().getCenterLonLat(), this.getZoomForResolution(map1.getResolution()));
-			map5.setCenter(newcenter, this.getZoomForResolution(map1.getResolution()));
+				}
+			var newzoom = map1.getZoomForResolution(map1.getResolution());			
+			map1.setCenter(sphm_center, newzoom);			
+			map2.setCenter(sphm_center, newzoom);
+			map3.setCenter(sphm_center, newzoom);
+			map4.setCenter(sphm_center, newzoom);
+			map5.setCenter(newcenter, newzoom);
+			test=0;
 		}
 
 		function syncWGS(){
-			var sphmr_center = this.getExtent().getCenterLonLat().transform(
-                    new OpenLayers.Projection("EPSG:4326"),map1.getProjectionObject());
-			map1.setCenter(sphmr_center, map1.getZoomForResolution(map1.getResolution()));
+			//var sphmr_center = this.getExtent().getCenterLonLat().transform(
+             //new OpenLayers.Projection("EPSG:4326"),map1.getProjectionObject());
+			//map1.setCenter(sphmr_center, map1.getZoomForResolution(map1.getResolution()));
+			sync(1);			
 			//map2.setCenter(sphmr_center, this.getZoomForResolution(map1.getResolution()));
 			//map3.setCenter(sphmr_center, this.getZoomForResolution(map1.getResolution()));
 			//map4.setCenter(sphmr_center, this.getZoomForResolution(map1.getResolution()));
@@ -232,35 +239,40 @@
 					
 					
 			</li>
-			<li class="item">OpenStreetMap
+			<li class="item"><a href="http://www.openstreetmap.org/">OpenStreetMap</a>
 			<div class="map" id="map1"></div>
 			</li>
-			<li class="item">Bing Maps
+			<li class="item"><a href="http://www.bing.com/maps/">Bing Maps</a>
 			<div class="map" id="map2"></div>
 			</li>
-			<li class="item">Mapquest (OpenStreetMap)			
+			<li class="item"><a href="http://open.mapquest.com/">Mapquest (OpenStreetMap)</a>			
 			<div class="map" id="map3"></div>
 			</li>
-			<li class="item">Google Maps
+			<li class="item"><a href="http://maps.google.com/">Google Maps</a>
 			<div class="map" id="map4"></div>
 			</li>
-			<li class="item">Yahoo Maps
+			<li class="item"><a href="http://maps.yahoo.com/">Yahoo Maps</a>
 			<div class="map" id="map5"></div>
 			</li>
 		</ol>
 	</div>
 		<div id="about">
-		Alex Mandel 2011
-		</ br>
-		Software used: <a href="http://openlayers.org">OpenLayers</a>
+		<h3>About</h3>
+		This website enables users to compare the quality and quanitity of data and cartography from the major providers of web basemaps.
+		</br>
+		Alex Mandel (c) 2011 - Code written by me is free for re-use.
+		</br>
+		Software used: <a href="http://openlayers.org">OpenLayers</a>, <a href="http://jquery.com/">JQuery</a>
 		Hosted by <a href="http://ice.ucdavis.edu">Information Center for the Environment</a>, University of California, Davis
-		Location search provided by Mapquest <a href="">Nominatim</a> service, Data from OpenStreetMap.org CC-By-SA
-		Maps provided by 
-			<a href="">Bing</a>, 
-			<a href="">Google</a>, 
-			<a href="">Yahoo</a>, 
-			<a href="">Mapquest</a>, 
-			and <a href="">OpenStreetMap</a>
+		</br>
+		Nominatim Search Courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png">, 
+		Data from <a href="http://www.openstreetmap.org/">OpenStreetMap.org</a> <a href="http://creativecommons.org/licenses/by-sa/2.0/">(CC-By-SA)</a>
+		</br>Maps provided by 
+			<a href="http://www.bing.com/maps/">Bing</a>, 
+			<a href="http://maps.google.com/">Google</a>, 
+			<a href="http://maps.yahoo.com/">Yahoo</a>, 
+			<a href="http://open.mapquest.com/">Mapquest</a>, 
+			and <a href="http://www.openstreetmap.org/">OpenStreetMap</a>
 		</div>
 </div>
 	
