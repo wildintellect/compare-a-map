@@ -1,0 +1,89 @@
+/*
+ * Fancy style sheet for map comparison tool.
+ * Alex Mandel 2011
+ */
+/*@import oldefaults.css*/
+
+
+#info{
+	font-size: .95em;
+    padding: 0px 10px 10px 10px;
+	width: 300px;
+	height: 256px;
+} 
+
+.item {
+	float:left;
+	margin:1px;
+	background: #2D2D2D;
+    padding: 16px 10px 10px 10px;
+    color: white;
+	width: 300px;
+	height: 240px;
+}
+
+
+.map {
+	width:300px;
+	height:200px;
+	padding-top:5px;
+}
+
+#header {
+}
+
+#loc {
+}
+
+#geocoder {
+}
+
+#panel {
+}
+
+#keeper {
+	display:inline;
+	list-style-type:none;
+}
+
+#content{
+	background: none repeat scroll 0 0 #A4E271;
+    margin: 0 auto;
+    width: 990px;
+    padding-top: 20px;
+    padding-left: 24px;
+}
+
+#mapcontain {
+	height:600;
+	margin: auto;
+}
+
+#keeper {
+	/*float:left;*/
+	/*width: 96%;
+    margin: 0px 5px 0px 5px;
+    padding-top: 20px; 
+	padding-bottom: 20px; 
+	padding-left:auto;
+	padding-right:auto;*/
+}
+
+#about {
+	font-size: .7em;
+}
+
+/*TODO: move the attribution to below the map frame*/
+.olControlAttribution {
+    padding-top: 250px;
+    padding-left: 150px;
+}
+
+#external_control{
+	position:relative;
+	height: 180px;
+	font-size: .9em;
+}
+#OpenLayer_Control_PanZoomBar_ZoombarOpenLayers.Map_11{
+
+}

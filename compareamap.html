@@ -1,11 +1,12 @@
 <html>
 <head>
-  <title>Map Comparison</title>
-	<link rel="stylesheet" href="style.css" type="text/css" />
+  <title>Compare-A-Map</title>
+	<link rel="stylesheet" href="/openlayers/theme/default/style.css" type="text/css" />
+	<link rel="stylesheet" href="comparestyle.css" type="text/css" />
     <script src="http://openlayers.org/dev/OpenLayers.js "></script>
 	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script src="http://open.mapquestapi.com/sdk/js/v6.1.0/mqa.toolkit.js"></script>
-	<script type="text/javascript" src="basic.js"></script>
+	<script type="text/javascript" src="nominatim-basic.js"></script>
 	<script src="http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=tFZmGb3V34H2FsCFb54YfDEwk2ZicNMTYcKVAm6HXU3qF6UjvodrfRxFN_wT4Q0V"></script>
 	<script type="text/javascript">
 	
@@ -29,20 +30,20 @@
 
 		var map1, map2, map3, map4, map5; 
 		var osm,mapquest,road,aerial,hybrid, yahooLayer;
-		var options;
+		var options, external_panel;
 		var wgscenter;
 
 
 
         function init(){
 
-			var external_panel = new OpenLayers.Control.Panel({
+			external_panel = new OpenLayers.Control.Panel({
                     div: document.getElementById('panel') });
 			var control_nav = new OpenLayers.Control.Navigation();
 			var control_zoom_in = new OpenLayers.Control.ZoomIn();
     		var control_zoom_out = new OpenLayers.Control.ZoomOut();
-
-			external_panel.addControls([control_nav,control_zoom_in,control_zoom_out]);
+			var control_panzoom = new OpenLayers.Control.PanZoomBar();
+			external_panel.addControls([control_panzoom]);
 			
 			master = {
 
@@ -91,6 +92,11 @@
           	map3 = new OpenLayers.Map( 'map3',options);
 			map4 = new OpenLayers.Map( 'map4',options);
 			map5 = new OpenLayers.Map( 'map5',options1);
+
+			var external_control = new OpenLayers.Control.PanZoomBar({
+        		div: document.getElementById('external_control') });
+
+			map1.addControl(external_control);
 
 			//map1.addControl = external_panel;
 			//map2.addControl = external_panel;
@@ -149,12 +155,13 @@
 			map5.setCenter(new OpenLayers.LonLat(-118.3950,37.36390),12);
 
 			map1.events.register('moveend',map1,sync)
-			//map1.events.register('zoomend',map1,sync)
 			map2.events.register('moveend',map2,sync)
-			//map2.events.register('zoomend',map2,sync)
 			map3.events.register('moveend',map3,sync)
 			map4.events.register('moveend',map4,sync)
 			//map5.events.register('moveend',map5,syncWGS)
+			
+			map1.events.register('zoomend',map1,sync)
+			
         }
 
 		function sync(){
@@ -164,7 +171,7 @@
 			map2.setCenter(this.getExtent().getCenterLonLat(), this.getZoomForResolution(map1.getResolution()));
 			map3.setCenter(this.getExtent().getCenterLonLat(), this.getZoomForResolution(map1.getResolution()));
 			map4.setCenter(this.getExtent().getCenterLonLat(), this.getZoomForResolution(map1.getResolution()));
-			map5.setCenter(newcenter, this.getZoomForResolution(map5.getResolution()));
+			map5.setCenter(newcenter, this.getZoomForResolution(map1.getResolution()));
 		}
 
 		function syncWGS(){
@@ -189,26 +196,24 @@
 	</script>
 </head>
     <body onload="init();">
-		<ol id="header" class="list">
-			<li id="Title">Compare-A-Map</li>
-			<li>
-				<!--<form onsubmit="doBasicSearchClick()">-->
-				<div id="geocoder">
-					<ol id="instruct">
-						<li>Enter a Place Name (City,State):<input type="text" name="location" id="loc" /></li>
-						<li>Click <button id="find" onclick="doBasicSearchClick()">Find</button> to recenter the maps</li>
-				<!--</form>-->
-						<li>Pan and zoom to compare the maps (panning in any map moves all of them)</li>
-				<ol>
-				</div>
-			</li>
-			
-		</ol>
-		<div id="panel">panel</div>
+	<div id="content">	
 	<div id="mapcontain">
 		<ol id="keeper" class="list">
-			<li class="item">
-			<div class="map" id="blank"></div>
+			<li class="item" id="info">
+					<h2>Compare-A-Map</h2>
+					
+					<!--<form onsubmit="doBasicSearchClick()">-->
+					<div id="geocoder">
+					<ol id="instruct">
+						<li>Enter a Place Name (City,State):<input type="text" name="location" id="loc" onkeydown="if (event.keyCode == 13) doBasicSearchClick()"/></li>
+						<li>Click <button id="find" onclick="doBasicSearchClick()">Find</button> to recenter the maps</li>
+					<!--</form>-->
+						<li>Pan and zoom to compare the maps (panning in any map moves all of them)</li>
+					</ol>
+					</div>
+					<div id="panel"></div>
+					<div id="external_control">Zoom</div>
+					
 			</li>
 			<li class="item">OpenStreetMap
 			<div class="map" id="map1"></div>
@@ -225,18 +230,26 @@
 			<li class="item">Yahoo Maps
 			<div class="map" id="map5"></div>
 			</li>
-			<li class="item">
-			<div class="map" id="blank"></div>
-			</li>
-			<li class="item">
-			<div class="map" id="blank"></div>
-			</li>
 		</ol>
 	</div>
-
+		<div id="about">
+		Alex Mandel 2011
+		</ br>
+		Software used: <a href="http://openlayers.org">OpenLayers</a>
+		Hosted by <a href="http://ice.ucdavis.edu">Information Center for the Environment</a>, University of California, Davis
+		Location search provided by Mapquest <a href="">Nominatim</a> service, Data from OpenStreetMap.org CC-By-SA
+		Maps provided by 
+			<a href="">Bing</a>, 
+			<a href="">Google</a>, 
+			<a href="">Yahoo</a>, 
+			<a href="">Mapquest</a>, 
+			and <a href="">OpenStreetMap</a>
+		</div>
+</div>
+	
 	<div id="divBasicResults"></div>
 	<div id="divBasicSearchResults" class="test"></div>
-
-    </body>
+	
+</body>
 </html>
 
