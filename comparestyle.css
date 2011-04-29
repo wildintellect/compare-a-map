@@ -73,6 +73,18 @@
 	font-size: .7em;
 }
 
+#zoom {
+	background:#2D2D2D;
+	width:50px;
+	border:none;
+	color:orange;
+}
+
+#slider {
+	margin-top: 5px;
+    background: tan;
+    border-color: white;
+}
 /*TODO: move the attribution to below the map frame*/
 .olControlAttribution {
     padding-top: 250px;
