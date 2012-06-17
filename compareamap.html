@@ -144,7 +144,7 @@
                     new OpenLayers.Projection("EPSG:4326"),
                     map1.getProjectionObject());           
 			map1.setCenter(center,12);
-    		map2.setCenter(center,12);
+    			map2.setCenter(center,12-1);
 			map3.setCenter(center,12);
 			map4.setCenter(center,12);
 			map5.setCenter(new OpenLayers.LonLat(-118.3950,37.36390),12);
@@ -172,7 +172,7 @@
 				}
 			var newzoom = map1.getZoomForResolution(map1.getResolution());			
 			map1.setCenter(sphm_center, newzoom);			
-			map2.setCenter(sphm_center, newzoom);
+			map2.setCenter(sphm_center, newzoom-1);
 			map3.setCenter(sphm_center, newzoom);
 			map4.setCenter(sphm_center, newzoom);
 			map5.setCenter(newcenter, newzoom);
