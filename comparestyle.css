@@ -84,7 +84,7 @@
 }
 
 #about a{
-	color:blue;
+	color:#6BA4F9;
 }
 
 #zoom {
@@ -96,8 +96,10 @@
 
 #slider {
 	margin-top: 5px;
-    background: tan;
+    background: #BFBFBF;
     border-color: white;
+	margin-left: -10px;
+    margin-right: 10px;
 }
 /*TODO: move the attribution to below the map frame*/
 .olControlAttribution {
