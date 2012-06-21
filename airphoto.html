@@ -14,15 +14,15 @@
 	<script type="text/javascript" src="nominatim-basic.js"></script>
 	<script src="http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=tFZmGb3V34H2FsCFb54YfDEwk2ZicNMTYcKVAm6HXU3qF6UjvodrfRxFN_wT4Q0V"></script>
 
-	<script type="text/javascript" src="compareamap.js">	</script>
+	<script type="text/javascript" src="compareaairphoto.js">	</script>
 </head>
     <body onload="init();">
-	<div id="content">	
+	<div id="content" class="photo">	
 	<div id="mapcontain">
 		<ol id="keeper" class="list">
 			<li class="item" id="info">
-					<h2>Compare-A-Map</h2>
-					
+					<h2>Compare-A-Map </h2>
+					<h3>Satellite</h3>					
 					<!--<form onsubmit="doBasicSearchClick()">-->
 					<div id="geocoder">
 					<ol id="instruct">
@@ -46,7 +46,7 @@
 			<li class="item"><a href="#" onclick="outsideMap('bing');">Bing Maps</a>
 			<div class="map" id="map2"></div>
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('mapquest');">Mapquest (OpenStreetMap)</a>			
+			<li class="item"><a href="#" onclick="outsideMap('mapquest');">Mapquest (Open Air)</a>			
 			<div class="map" id="map3"></div>
 			</li>
 			<li class="item"><a href="#" onclick="outsideMap('google');">Google Maps</a>

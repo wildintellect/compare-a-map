@@ -12,6 +12,10 @@
 	height: 256px;
 } 
 
+#info h3{
+	font-size: .75em;
+}
+
 .item {
 	float:left;
 	margin:1px;
@@ -49,6 +53,20 @@
 	list-style-type:none;
 }
 
+#content.osm{
+	background: none repeat scroll 0 0 #955743;
+}
+#content.hybrid{
+	background: none repeat scroll 0 0 #65953C;
+}
+#content.cluster{
+	background: none repeat scroll 0 0 #AF6046;
+}
+
+
+#content.photo{
+	background: none repeat scroll 0 0 #8C9CEA;
+}
 #content{
 	background: none repeat scroll 0 0 #A4E271;
     margin: 0 auto;
@@ -57,6 +75,8 @@
     padding-left: 24px;
 	padding-bottom:20px;
 }
+
+
 
 #mapcontain {
 	height:540px;
