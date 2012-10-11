@@ -73,7 +73,7 @@ map1 = new OpenLayers.Map( 'map1',options);
 map2 = new OpenLayers.Map( 'map2',options);
 map3 = new OpenLayers.Map( 'map3',options);
 map4 = new OpenLayers.Map( 'map4',options);
-map5 = new OpenLayers.Map( 'map5',options1);
+map5 = new OpenLayers.Map( 'map5',options);
 
 	//var external_control = new OpenLayers.Control.PanZoomBar({
 //	div: document.getElementById('external_control') });
@@ -84,88 +84,78 @@ map5 = new OpenLayers.Map( 'map5',options1);
 //Layers
 	osm = new OpenLayers.Layer.OSM( "Simple OSM Map");
 	mapquest = new OpenLayers.Layer.MapQuestOSM("Mapquest OSM");
-	// Bing's Road imagerySet
-	var road = new OpenLayers.Layer.Bing({
-		key: bapiKey,
-		type: "Road"
-	});
-	// Bing's Aerial imagerySet
-	var aerial = new OpenLayers.Layer.Bing({
-		key: bapiKey,
-		type: "Aerial"
-	});
-	// Bing's AerialWithLabels imagerySet
-	var hybrid = new OpenLayers.Layer.Bing({
-		key: bapiKey,
-		type: "AerialWithLabels",
-		name: "Bing Aerial With Labels"
-	});
-	var gsat = new OpenLayers.Layer.Google(
-		"Google Satellite",
-		{type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22}
-	);
-	var gphy = new OpenLayers.Layer.Google(
-		"Google Physical",
-		{type: google.maps.MapTypeId.TERRAIN, visibility: false}
-	);
-	var gmap = new OpenLayers.Layer.Google(
-		"Google Streets", // the default
-		{numZoomLevels: 20, visibility: false}
-	);
-	var ghyb = new OpenLayers.Layer.Google(
-		"Google Hybrid",
-		{type: google.maps.MapTypeId.HYBRID, numZoomLevels: 22, visibility: false}
-	);
-	yahooLayer = new OpenLayers.Layer.Yahoo( "Yahoo");
+	
+    var watercolor = new OpenLayers.Layer.XYZ(
+    "Water Color",
+    ["http://169.237.167.64/tilestache/watercolor/${z}/${x}/${y}.png"],
+    {wrapDateLine: true, enabled:false,
+    buffer: 1,numZoomLevels: 16, minZoom:4,
+    isBaseLayer:true,sphericalMecator:true}
+    );
 
+    var toner = new OpenLayers.Layer.XYZ(
+    "Toner",
+    ["http://a.tile.stamen.com/toner/${z}/${x}/${y}.png",
+     "http://b.tile.stamen.com/toner/${z}/${x}/${y}.png"],
+    {wrapDateLine: true, visibility:false,
+    buffer: 1,numZoomLevels: 18, minZoom:4,
+    isBaseLayer:true,sphericalMecator:true}
+    );
 
+    var terrain = new OpenLayers.Layer.XYZ(
+    "Terrain",
+    ["http://a.tile.stamen.com/terrain/${z}/${x}/${y}.png",
+     "http://b.tile.stamen.com/terrain/${z}/${x}/${y}.png"],
+    {wrapDateLine: true, visibility:false,
+    buffer: 1,numZoomLevels: 18, minZoom:4,
+    isBaseLayer:true,sphericalMecator:true}
+    );
+    
+    var cycle = new OpenLayers.Layer.OSM(
+        "OpenCyclemapMap",
+        "http://tile.opencyclemap.org/cycle/${z}/${x}/${y}.png",
+    {wrapDateLine: true, visibility:false,
+    buffer: 1,numZoomLevels: 18, minZoom:4,
+    isBaseLayer:true,sphericalMecator:true}
+    );
+    
 	map1.addLayer(osm);
-	map2.addLayer(road);
+	map2.addLayer(toner);
 	map3.addLayer(mapquest);
-	map4.addLayer(gmap);
-	map5.addLayer(yahooLayer);
+	map4.addLayer(cycle);
+	map5.addLayer(watercolor);
 
 	center =  new OpenLayers.LonLat(-118.3950,37.36390 ).transform(
 	new OpenLayers.Projection("EPSG:4326"),
 	map1.getProjectionObject());           
 	map1.setCenter(center,12);
-	map2.setCenter(center,12-1);
+	map2.setCenter(center,12);
 	map3.setCenter(center,12);
 	map4.setCenter(center,12);
-	map5.setCenter(new OpenLayers.LonLat(-118.3950,37.36390),12);
+	map5.setCenter(center,12);
 
 	map1.events.register('moveend',map1,sync)
 	map2.events.register('moveend',map2,sync)
 	map3.events.register('moveend',map3,sync)
 	map4.events.register('moveend',map4,sync)
-	//map5.events.register('moveend',map5,syncWGS)
+	map5.events.register('moveend',map5,sync)
 	
 	map1.events.register('zoomend',map1,sync)
 	
 }
 
 function sync(test){
-	if(test==1){
-		var sphm_center = map5.getExtent().getCenterLonLat().transform(
-        new OpenLayers.Projection("EPSG:4326"),map1.getProjectionObject());
-		var newcenter = map5.getExtent().getCenterLonLat();
-		}
-	else{
+	
 		var sphm_center = this.getExtent().getCenterLonLat();
 		var newcenter = this.getExtent().getCenterLonLat().transform(
         map1.getProjectionObject(),new OpenLayers.Projection("EPSG:4326"));
-		}
 	var newzoom = map1.getZoomForResolution(map1.getResolution());			
 	map1.setCenter(sphm_center, newzoom);			
-	map2.setCenter(sphm_center, newzoom-1);
+	map2.setCenter(sphm_center, newzoom);
 	map3.setCenter(sphm_center, newzoom);
 	map4.setCenter(sphm_center, newzoom);
-	if(newzoom<16){
-		map5.setCenter(newcenter, newzoom);
-	}
-	else{
-		//TODO: blank map when not available
-	}
+	map5.setCenter(sphm_center, newzoom);
+
 	test=0;
 }
 

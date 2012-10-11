@@ -54,7 +54,7 @@
 }
 
 #content.osm{
-	background: none repeat scroll 0 0 #955743;
+	background: none repeat scroll 0 0 #ebac8d;
 }
 #content.hybrid{
 	background: none repeat scroll 0 0 #65953C;
@@ -62,7 +62,9 @@
 #content.cluster{
 	background: none repeat scroll 0 0 #AF6046;
 }
-
+#content.terrain{
+	background: none repeat scroll 0 0 #db8deb;
+}
 
 #content.photo{
 	background: none repeat scroll 0 0 #8C9CEA;

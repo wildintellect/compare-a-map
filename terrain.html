@@ -14,10 +14,10 @@
 	<script type="text/javascript" src="nominatim-basic.js"></script>
 	<script src="http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=tFZmGb3V34H2FsCFb54YfDEwk2ZicNMTYcKVAm6HXU3qF6UjvodrfRxFN_wT4Q0V"></script>
 
-	<script type="text/javascript" src="compareaosm.js">	</script>
+	<script type="text/javascript" src="compareaterrain.js">	</script>
 </head>
     <body onload="init();">
-	<div id="content" class="osm">	
+	<div id="content" class="terrain">	
 	<div id="mapcontain">
 		<ol id="keeper" class="list">
 			<li class="item" id="info">
@@ -40,19 +40,19 @@
 					
 					
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('osm');">OpenStreetMap</a>
+			<li class="item"><a href="#" onclick="outsideMap('osm');">Stamen: Terrain</a>
 			<div class="map" id="map1"></div>
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('toner');">Stamen: Toner</a>
+			<li class="item"><a href="#" onclick="outsideMap('google');">Google Terrain</a>
 			<div class="map" id="map2"></div>
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('mapquest');">Mapquest</a>			
+			<li class="item"><a href="#" onclick="outsideMap('mapquest');">Open Cycle Landscape</a>			
 			<div class="map" id="map3"></div>
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('google');">Open Cycle Map</a>
+			<li class="item"><a href="#" onclick="outsideMap('google');">TopOSM Relief</a>
 			<div class="map" id="map4"></div>
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('yahoo');">Stamen: Water Color</a>
+			<li class="item"><a href="#" onclick="outsideMap('yahoo');">Closed Contour</a>
 			<div class="map" id="map5"></div>
 			</li>
 		</ol>

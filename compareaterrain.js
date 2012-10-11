@@ -132,20 +132,60 @@ isBaseLayer:true,sphericalMecator:true}
 	  //sphericalMercator: true
 	  }
     	);
-    var usgsNAIP = new OpenLayers.Layer.WMS("NAIP","http://raster.nationalmap.gov/ArcGIS/services/Orthoimagery/USGS_EDC_Ortho_NAIP/ImageServer/WMSServer?",
+    var usgsNAIP = new OpenLayers.Layer.WMS("NAIP",
+        "http://raster.nationalmap.gov/ArcGIS/services/Orthoimagery/USGS_EDC_Ortho_NAIP/ImageServer/WMSServer?",
         {layers:'0',isBaseLayer:true,//sphericalMercator:true
         }
+    );
+    
+    var terrain = new OpenLayers.Layer.XYZ(
+        "Terrain",
+        ["http://a.tile.stamen.com/terrain/${z}/${x}/${y}.png",
+        "http://b.tile.stamen.com/terrain/${z}/${x}/${y}.png"],
+    {wrapDateLine: true, visibility:false,
+    buffer: 1,numZoomLevels: 18, minZoom:4,
+    isBaseLayer:true,sphericalMecator:true}
+    );
+    
+    var toposm = new OpenLayers.Layer.XYZ(
+        "TopOSM",
+        ["http://c.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
+        "http://d.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png"],
+        {wrapDateLine: true, visibility:false,
+    buffer: 1,numZoomLevels: 18, minZoom:4,
+    isBaseLayer:true,sphericalMecator:true}
+    );
+    
+    var cyclelandscape = new OpenLayers.Layer.OSM(
+        "OpenCyclemapMap",
+        "http://tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png",
+    {wrapDateLine: true, visibility:false,
+    buffer: 1,numZoomLevels: 18, minZoom:4,
+    isBaseLayer:true,sphericalMecator:true}
+    );
+    
+    var MAX_RESOLUTION = 3276.8
+    var LAYER_EXTENT = new OpenLayers.Bounds( -256 * MAX_RESOLUTION, 1024 * MAX_RESOLUTION, 256 * MAX_RESOLUTION, 1536 * MAX_RESOLUTION)
+    var sps = new OpenLayers.Layer.XYZ("SPS",
+	    "http://tiles.closedcontour.com/sps/v2/${z}/${x}/${y}.jpg",
+	{
+		//maxExtent: LAYER_EXTENT,
+		//maxResolution: MAX_RESOLUTION / 4,
+		//numZoomLevels: 9,
+		//projection: "SPS.CLOSEDCONTOUR.COM",
+		//units: "m",
+	}
     );
     
     //Must alias 900913 to 3875 for usgs naip to work
     aliasproj = new OpenLayers.Projection("EPSG:3857");
     usgsNAIP.projection = aliasproj;
 
-	map1.addLayer(usgsNAIP);
-	map2.addLayer(aerial);
-	map3.addLayer(mapqair);
-	map4.addLayer(gsat);
-	map5.addLayer(yahoosat);
+	map1.addLayer(terrain);
+	map2.addLayer(gphy);
+	map3.addLayer(cyclelandscape);
+	map4.addLayer(toposm);
+	map5.addLayer(sps);
 
 	center =  new OpenLayers.LonLat(-118.3950,37.36390 ).transform(
 	new OpenLayers.Projection("EPSG:4326"),
