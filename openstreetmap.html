@@ -15,6 +15,7 @@
 	<script src="http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=tFZmGb3V34H2FsCFb54YfDEwk2ZicNMTYcKVAm6HXU3qF6UjvodrfRxFN_wT4Q0V"></script>
 
 	<script type="text/javascript" src="compareaosm.js">	</script>
+	<script type="text/javascript" src="shared.js">	</script>
 </head>
     <body onload="init();">
 	<div id="content" class="osm">	
@@ -22,7 +23,15 @@
 		<ol id="keeper" class="list">
 			<li class="item" id="info">
 					<h2>Compare-A-Map </h2>
-					<h3>OpenStreetMap</h3>					
+					<div id="title">
+                        <select id="mapList" onchange="switchMap()">
+                            <option>OpenStreetMap</option>
+                            <option>Street</option>
+                            <option>Satellite</option>
+                            <option>Terrain</option>
+                        </select>
+                    </div>
+                    </br					
 					<!--<form onsubmit="doBasicSearchClick()">-->
 					<div id="geocoder">
 					<ol id="instruct">

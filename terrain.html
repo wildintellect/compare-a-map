@@ -22,7 +22,15 @@
 		<ol id="keeper" class="list">
 			<li class="item" id="info">
 					<h2>Compare-A-Map </h2>
-					<h3>OpenStreetMap</h3>					
+					<div id="title">
+                        <select id="mapList" onchange="switchMap()">
+                            <option>Terrain</option>
+                            <option>Street</option>
+                            <option>Satellite</option>
+                            <option>OpenStreetMap</option>
+                        </select>
+                    </div>
+                    </br							
 					<!--<form onsubmit="doBasicSearchClick()">-->
 					<div id="geocoder">
 					<ol id="instruct">
