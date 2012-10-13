@@ -12,6 +12,10 @@
 	height: 256px;
 } 
 
+h2{
+    font-size: 160%;
+}
+
 #info h3{
 	font-size: .75em;
 }
