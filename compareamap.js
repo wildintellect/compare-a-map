@@ -125,22 +125,22 @@ map5 = new OpenLayers.Map( 'map5',options1);
 	map4.addLayer(gmap);
 	map5.addLayer(yahooLayer);
 
-	center =  new OpenLayers.LonLat(-118.3950,37.36390 ).transform(
-	new OpenLayers.Projection("EPSG:4326"),
-	map1.getProjectionObject());           
+	center =  startpoint.transform(
+	    new OpenLayers.Projection("EPSG:4326"),
+	    map1.getProjectionObject());           
 	map1.setCenter(center,12);
 	map2.setCenter(center,12-1);
 	map3.setCenter(center,12);
 	map4.setCenter(center,12);
-	map5.setCenter(new OpenLayers.LonLat(-118.3950,37.36390),12);
+	map5.setCenter(new OpenLayers.LonLat(-121.73626,38.55515),12);
 
-	map1.events.register('moveend',map1,sync)
-	map2.events.register('moveend',map2,sync)
-	map3.events.register('moveend',map3,sync)
-	map4.events.register('moveend',map4,sync)
+	map1.events.register('moveend',map1,sync);
+	map2.events.register('moveend',map2,sync);
+	map3.events.register('moveend',map3,sync);
+	map4.events.register('moveend',map4,sync);
 	//map5.events.register('moveend',map5,syncWGS)
 	
-	map1.events.register('zoomend',map1,sync)
+	map1.events.register('zoomend',map1,sync);
 	
 }
 

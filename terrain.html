@@ -15,6 +15,7 @@
 	<script src="http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=tFZmGb3V34H2FsCFb54YfDEwk2ZicNMTYcKVAm6HXU3qF6UjvodrfRxFN_wT4Q0V"></script>
 
 	<script type="text/javascript" src="compareaterrain.js">	</script>
+	<script type="text/javascript" src="shared.js">	</script>
 </head>
     <body onload="init();">
 	<div id="content" class="terrain">	
@@ -30,7 +31,7 @@
                             <option>OpenStreetMap</option>
                         </select>
                     </div>
-                    </br							
+                    </br>					
 					<!--<form onsubmit="doBasicSearchClick()">-->
 					<div id="geocoder">
 					<ol id="instruct">
@@ -48,19 +49,19 @@
 					
 					
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('osm');">Stamen: Terrain</a>
+			<li class="item"><a href="#" onclick="outsideMap('stamenT');">Stamen: Terrain</a>
 			<div class="map" id="map1"></div>
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('google');">Google Terrain</a>
+			<li class="item"><a href="#" onclick="outsideMap('googlephy');">Google Terrain</a>
 			<div class="map" id="map2"></div>
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('mapquest');">Open Cycle Landscape</a>			
+			<li class="item"><a href="#" onclick="outsideMap('mapquest');">Suggestions?</a>			
 			<div class="map" id="map3"></div>
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('google');">TopOSM Relief</a>
+			<li class="item"><a href="#" onclick="outsideMap('ocmland');">Open Cycle Landscape</a>
 			<div class="map" id="map4"></div>
 			</li>
-			<li class="item"><a href="#" onclick="outsideMap('yahoo');">Closed Contour</a>
+			<li class="item"><a href="#" onclick="outsideMap('toposm');">TopOSM Relief</a>
 			<div class="map" id="map5"></div>
 			</li>
 		</ol>

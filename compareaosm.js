@@ -125,7 +125,7 @@ map5 = new OpenLayers.Map( 'map5',options);
 	map4.addLayer(cycle);
 	map5.addLayer(watercolor);
 
-	center =  new OpenLayers.LonLat(-118.3950,37.36390 ).transform(
+	center =  startpoint.transform(
 	new OpenLayers.Projection("EPSG:4326"),
 	map1.getProjectionObject());           
 	map1.setCenter(center,12);
@@ -215,13 +215,13 @@ function outsideMap(site) {
 			//http://mapq.st/?center=39.6133,-105.016098&zoom=8
 			openurl="http://open.mapquest.com/?center="+center.lat+","+center.lon+"&zoom="+map1.zoom+"";
 			break;		
-		case 'bing':
-			//http://www.bing.com/maps/?v=2&cp=38.544708251~-121.740341186&lvl=7&dir=0&sty=r&form=LMLTCC
-			openurl="http://www.bing.com/maps/?v=2&cp="+center.lat+"~"+center.lon+"&lvl="+map5.zoom+"&dir=0&sty=r&form=LMLTCC";
+		case 'toner':
+    //http://maps.stamen.com/#/12/37.7706/-122.3782
+			openurl="http://maps.stamen.com/toner/#"+map1.zoom+"/"+center.lat+"/"+center.lon;
 			break;
-		case 'yahoo':
-			//http://maps.yahoo.com/#lat=38.5489709408161&lon=-121.72988891601562&zoom=12&mvt=m&trf=0
-			openurl="http://maps.yahoo.com/#lat="+center.lat+"&lon="+center.lon+"&zoom="+map1.zoom+"&mvt=m&trf=0";
+		case 'watercolor':
+            //http://maps.stamen.com/#watercolor/12/37.7706/-122.3782
+			openurl="http://maps.stamen.com/watercolor/#"+map1.zoom+"/"+center.lat+"/"+center.lon;
 			break;
 		case 'none':
 			openurl = "";		

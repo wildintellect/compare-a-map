@@ -71,7 +71,7 @@ function init(){
 //Maps
 map1 = new OpenLayers.Map( 'map1',options);
 map2 = new OpenLayers.Map( 'map2',options);
-map3 = new OpenLayers.Map( 'map3',options);
+//map3 = new OpenLayers.Map( 'map3',options);
 map4 = new OpenLayers.Map( 'map4',options);
 map5 = new OpenLayers.Map( 'map5',options1);
 
@@ -183,26 +183,27 @@ isBaseLayer:true,sphericalMecator:true}
 
 	map1.addLayer(terrain);
 	map2.addLayer(gphy);
-	map3.addLayer(cyclelandscape);
-	map4.addLayer(toposm);
-	map5.addLayer(sps);
+	//map3.addLayer(cyclelandscape);
+	map4.addLayer(cyclelandscape);
+	map5.addLayer(toposm);
 
-	center =  new OpenLayers.LonLat(-118.3950,37.36390 ).transform(
+	center =  startpoint.transform(
 	new OpenLayers.Projection("EPSG:4326"),
 	map1.getProjectionObject());           
 	map1.setCenter(center,12);
-	map2.setCenter(center,12-1);
-	map3.setCenter(center,12);
+	map2.setCenter(center,12);
+	//map3.setCenter(center,12);
 	map4.setCenter(center,12);
-	map5.setCenter(new OpenLayers.LonLat(-118.3950,37.36390),12);
+	map5.setCenter(center,12);
 
-	map1.events.register('moveend',map1,sync)
-	map2.events.register('moveend',map2,sync)
-	map3.events.register('moveend',map3,sync)
-	map4.events.register('moveend',map4,sync)
+	map1.events.register('moveend',map1,sync);
+	map2.events.register('moveend',map2,sync);
+	//map3.events.register('moveend',map3,sync);
+	map4.events.register('moveend',map4,sync);
+	map4.events.register('moveend',map4,sync);
 	//map5.events.register('moveend',map5,syncWGS)
 	
-	map1.events.register('zoomend',map1,sync)
+	map1.events.register('zoomend',map1,sync);
 	
 }
 

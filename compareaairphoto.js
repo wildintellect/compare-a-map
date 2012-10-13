@@ -147,14 +147,15 @@ isBaseLayer:true,sphericalMecator:true}
 	map4.addLayer(gsat);
 	map5.addLayer(yahoosat);
 
-	center =  new OpenLayers.LonLat(-118.3950,37.36390 ).transform(
+	center =  startpoint.transform(
 	new OpenLayers.Projection("EPSG:4326"),
 	map1.getProjectionObject());           
 	map1.setCenter(center,12);
 	map2.setCenter(center,12-1);
 	map3.setCenter(center,12);
 	map4.setCenter(center,12);
-	map5.setCenter(new OpenLayers.LonLat(-118.3950,37.36390),12);
+	//map5.setCenter(startpoint,12); Fails to load?
+	map5.setCenter(new OpenLayers.LonLat(-121.73626,38.55515),12);
 
 	map1.events.register('moveend',map1,sync)
 	map2.events.register('moveend',map2,sync)
@@ -235,13 +236,13 @@ function outsideMap(site) {
 //		alert("works");
 //	};
 	switch(site){
-		case "osm":
+		case "naip":
 			//http://www.openstreetmap.org/?lat=38.5368&lon=-121.7588&zoom=14&layers=M
-			openurl="http://www.openstreetmap.org/?lat="+center.lat+"&lon="+center.lon+"&zoom="+map1.zoom+"&layers=M";
+			openurl="http://cumulus.cr.usgs.gov/service_access_list.php?serviceid=Dataset_5&dataset=NAIP";
 			break;
 		case "google":
 			//https://maps.google.com/?ie=UTF8&ll=39.368279,-116.916504&spn=8.965981,19.753418&t=m&z=6&vpsrc=6
-			openurl="http://maps.google.com/?ie=UTF8&ll="+center.lat+","+center.lon+"&z="+map1.zoom+"&t=m";
+			openurl="http://maps.google.com/?ie=UTF8&ll="+center.lat+","+center.lon+"&z="+map1.zoom+"&t=h";
 			break;
 		case 'mapquest':
 			//http://mapq.st/?center=39.6133,-105.016098&zoom=8
