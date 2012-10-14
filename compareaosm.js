@@ -1,6 +1,16 @@
-/* Compare A Map main js
-Alex Mandel 2011-2012
-Apache 2.0 License
+/* Compare A Map OSM js
+Alex Mandel Copyright 2012
+tech@wildintellect.com
+http://blog.wildintellect.com
+
+Live code can be seen on http://compareamap.org
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
 */
 
 OpenLayers.Layer.MapQuestOSM = OpenLayers.Class(OpenLayers.Layer.XYZ, {
@@ -216,11 +226,11 @@ function outsideMap(site) {
 			openurl="http://open.mapquest.com/?center="+center.lat+","+center.lon+"&zoom="+map1.zoom+"";
 			break;		
 		case 'toner':
-    //http://maps.stamen.com/#/12/37.7706/-122.3782
+    //http://maps.stamen.com/toner/#/12/37.7706/-122.3782
 			openurl="http://maps.stamen.com/toner/#"+map1.zoom+"/"+center.lat+"/"+center.lon;
 			break;
 		case 'watercolor':
-            //http://maps.stamen.com/#watercolor/12/37.7706/-122.3782
+            //http://maps.stamen.com/watercolor/#12/37.7706/-122.3782
 			openurl="http://maps.stamen.com/watercolor/#"+map1.zoom+"/"+center.lat+"/"+center.lon;
 			break;
 		case 'none':

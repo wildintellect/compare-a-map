@@ -1,8 +1,17 @@
-/* Compare A Map main js
-Alex Mandel 2011-2012
-Apache 2.0 License
-*/
+/* Compare A Map Terrain js
+Alex Mandel Copyright 2012
+tech@wildintellect.com
+http://blog.wildintellect.com
 
+Live code can be seen on http://compareamap.org
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+*/
 OpenLayers.Layer.MapQuestOSM = OpenLayers.Class(OpenLayers.Layer.XYZ, {
 name: "MapQuestOSM", //attribution: "Data CC-By-SA by <a href='http://openstreetmap.org/'>OpenStreetMap</a>",
 sphericalMercator: true,
@@ -75,11 +84,6 @@ map2 = new OpenLayers.Map( 'map2',options);
 map4 = new OpenLayers.Map( 'map4',options);
 map5 = new OpenLayers.Map( 'map5',options1);
 
-	//var external_control = new OpenLayers.Control.PanZoomBar({
-//	div: document.getElementById('external_control') });
-
-	//map1.addControl(external_control);
-	//map1.addControl = external_panel;
 
 //Layers
 	osm = new OpenLayers.Layer.OSM( "Simple OSM Map");
@@ -143,17 +147,30 @@ isBaseLayer:true,sphericalMecator:true}
         ["http://a.tile.stamen.com/terrain/${z}/${x}/${y}.png",
         "http://b.tile.stamen.com/terrain/${z}/${x}/${y}.png"],
     {wrapDateLine: true, visibility:false,
-    buffer: 1,numZoomLevels: 18, minZoom:4,
+    buffer: 1,numZoomLevels: 18, minZoom:0,
     isBaseLayer:true,sphericalMecator:true}
     );
     
     var toposm = new OpenLayers.Layer.XYZ(
         "TopOSM",
         ["http://c.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
-        "http://d.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png"],
+        "http://d.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
+        "http://a.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
+        "http://b.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png"],
         {wrapDateLine: true, visibility:false,
-    buffer: 1,numZoomLevels: 18, minZoom:4,
+    buffer: 1,numZoomLevels: 16, minZoom:0,
     isBaseLayer:true,sphericalMecator:true}
+    );
+    
+    var toposmfeature = new OpenLayers.Layer.XYZ(
+        "TopOSMOverlay",
+        ["http://c.tile.stamen.com/toposm-features/${z}/${x}/${y}.png",
+        "http://d.tile.stamen.com/toposm-features/${z}/${x}/${y}.png",
+        "http://a.tile.stamen.com/toposm-features/${z}/${x}/${y}.png",
+        "http://b.tile.stamen.com/toposm-features/${z}/${x}/${y}.png"],
+         {wrapDateLine: true, visibility:false,
+    buffer: 1,numZoomLevels: 16, minZoom:0,
+    isBaseLayer:false,sphericalMecator:true}
     );
     
     var cyclelandscape = new OpenLayers.Layer.OSM(
@@ -186,6 +203,7 @@ isBaseLayer:true,sphericalMecator:true}
 	//map3.addLayer(cyclelandscape);
 	map4.addLayer(cyclelandscape);
 	map5.addLayer(toposm);
+	map5.addLayer(toposmfeature);
 
 	center =  startpoint.transform(
 	new OpenLayers.Projection("EPSG:4326"),
@@ -276,21 +294,21 @@ function outsideMap(site) {
 //		alert("works");
 //	};
 	switch(site){
-		case "osm":
-			//http://www.openstreetmap.org/?lat=38.5368&lon=-121.7588&zoom=14&layers=M
-			openurl="http://www.openstreetmap.org/?lat="+center.lat+"&lon="+center.lon+"&zoom="+map1.zoom+"&layers=M";
+		case "stamenT":
+        //http://maps.stamen.com/terrain/#12/37.7706/-122.3782
+			openurl="http://maps.stamen.com/terrain/#"+map1.zoom+"/"+center.lat+"/"+center.lon;
 			break;
-		case "google":
+		case "googlephy":
 			//https://maps.google.com/?ie=UTF8&ll=39.368279,-116.916504&spn=8.965981,19.753418&t=m&z=6&vpsrc=6
-			openurl="http://maps.google.com/?ie=UTF8&ll="+center.lat+","+center.lon+"&z="+map1.zoom+"&t=m";
+			openurl="http://maps.google.com/?ie=UTF8&ll="+center.lat+","+center.lon+"&z="+map1.zoom+"&t=p";
 			break;
-		case 'mapquest':
-			//http://mapq.st/?center=39.6133,-105.016098&zoom=8
-			openurl="http://open.mapquest.com/?center="+center.lat+","+center.lon+"&zoom="+map1.zoom+"";
+		case 'ocmland':
+			//http://www.opencyclemap.org/?zoom=6&lat=53.8&lon=-1.85&layers=00B
+			openurl="http://www.opencyclemap.org/?lat="+center.lat+"&lon="+center.lon+"&zoom="+map1.zoom+"&layers=00B";
 			break;		
-		case 'bing':
-			//http://www.bing.com/maps/?v=2&cp=38.544708251~-121.740341186&lvl=7&dir=0&sty=r&form=LMLTCC
-			openurl="http://www.bing.com/maps/?v=2&cp="+center.lat+"~"+center.lon+"&lvl="+map5.zoom+"&dir=0&sty=r&form=LMLTCC";
+		case 'toposm':
+			//http://www.toposm.com/us/?zoom=10&lat=39.08604&lon=-99.77429&layers=B0TT
+			openurl="http://www.toposm.com/us/?lat="+center.lat+"&lon"+center.lon+"&zoom="+map5.zoom+"&layers=B0TT";
 			break;
 		case 'yahoo':
 			//http://maps.yahoo.com/#lat=38.5489709408161&lon=-121.72988891601562&zoom=12&mvt=m&trf=0
