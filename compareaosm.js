@@ -217,9 +217,9 @@ function outsideMap(site) {
 			//http://www.openstreetmap.org/?lat=38.5368&lon=-121.7588&zoom=14&layers=M
 			openurl="http://www.openstreetmap.org/?lat="+center.lat+"&lon="+center.lon+"&zoom="+map1.zoom+"&layers=M";
 			break;
-		case "google":
-			//https://maps.google.com/?ie=UTF8&ll=39.368279,-116.916504&spn=8.965981,19.753418&t=m&z=6&vpsrc=6
-			openurl="http://maps.google.com/?ie=UTF8&ll="+center.lat+","+center.lon+"&z="+map1.zoom+"&t=m";
+		case 'ocm':
+			//http://www.opencyclemap.org/?zoom=6&lat=53.8&lon=-1.85&layers=00B
+			openurl="http://www.opencyclemap.org/?lat="+center.lat+"&lon="+center.lon+"&zoom="+map1.zoom+"&layers=B00";
 			break;
 		case 'mapquest':
 			//http://mapq.st/?center=39.6133,-105.016098&zoom=8
