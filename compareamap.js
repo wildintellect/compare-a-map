@@ -237,7 +237,7 @@ function outsideMap(site) {
 			break;		
 		case 'bing':
 			//http://www.bing.com/maps/?v=2&cp=38.544708251~-121.740341186&lvl=7&dir=0&sty=r&form=LMLTCC
-			openurl="http://www.bing.com/maps/?v=2&cp="+center.lat+"~"+center.lon+"&lvl="+map5.zoom+"&dir=0&sty=r&form=LMLTCC";
+			openurl="http://www.bing.com/maps/?v=2&cp="+center.lat+"~"+center.lon+"&lvl="+map1.zoom+"&dir=0&sty=r&form=LMLTCC";
 			break;
 		case 'yahoo':
 			//http://maps.yahoo.com/#lat=38.5489709408161&lon=-121.72988891601562&zoom=12&mvt=m&trf=0

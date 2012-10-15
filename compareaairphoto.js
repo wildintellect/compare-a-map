@@ -249,21 +249,21 @@ function outsideMap(site) {
 			//http://www.openstreetmap.org/?lat=38.5368&lon=-121.7588&zoom=14&layers=M
 			openurl="http://cumulus.cr.usgs.gov/service_access_list.php?serviceid=Dataset_5&dataset=NAIP";
 			break;
-		case "google":
+		case "googlesat":
 			//https://maps.google.com/?ie=UTF8&ll=39.368279,-116.916504&spn=8.965981,19.753418&t=m&z=6&vpsrc=6
-			openurl="http://maps.google.com/?ie=UTF8&ll="+center.lat+","+center.lon+"&z="+map1.zoom+"&t=h";
+			openurl="http://maps.google.com/?ie=UTF8&ll="+center.lat+","+center.lon+"&z="+map1.zoom+"&t=k";
 			break;
-		case 'mapquest':
+		case 'mapquestsat':
 			//http://mapq.st/?center=39.6133,-105.016098&zoom=8
 			openurl="http://open.mapquest.com/?center="+center.lat+","+center.lon+"&zoom="+map1.zoom+"";
 			break;		
-		case 'bing':
-			//http://www.bing.com/maps/?v=2&cp=38.544708251~-121.740341186&lvl=7&dir=0&sty=r&form=LMLTCC
-			openurl="http://www.bing.com/maps/?v=2&cp="+center.lat+"~"+center.lon+"&lvl="+map5.zoom+"&dir=0&sty=r&form=LMLTCC";
+		case 'bingsat':
+			//http://www.bing.com/maps/?v=2&cp=38.555150~-121.736260&lvl=12&dir=0&sty=a&form=LMLTCC
+			openurl="http://www.bing.com/maps/?v=2&cp="+center.lat+"~"+center.lon+"&lvl="+map1.zoom+"&dir=0&sty=a&form=LMLTCC";
 			break;
-		case 'yahoo':
-			//http://maps.yahoo.com/#lat=38.5489709408161&lon=-121.72988891601562&zoom=12&mvt=m&trf=0
-			openurl="http://maps.yahoo.com/#lat="+center.lat+"&lon="+center.lon+"&zoom="+map1.zoom+"&mvt=m&trf=0";
+		case 'yahoosat':
+			//http://maps.yahoo.com/#lat=38.5489709408161&lon=-121.72988891601562&zoom=12&mvt=s&trf=0
+			openurl="http://maps.yahoo.com/#lat="+center.lat+"&lon="+center.lon+"&zoom="+map1.zoom+"&mvt=s&trf=0";
 			break;
 		case 'none':
 			openurl = "";		
