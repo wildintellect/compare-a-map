@@ -3,7 +3,7 @@ Compare-A-Map
 
 #About
 
-To see this code in action http://compareamap.org/v2/
+To see this code in action http://compareamap.org/
 
 
 This website enables users to compare the quality and quanitity of data and cartography from the major providers of web basemaps.
@@ -15,7 +15,6 @@ Maps provided by Bing, Google, Yahoo, Mapquest, Stamen Designs, OpenCycleMap, US
 ##License
 
 By **Alex Mandel** Copyright 2011-2012. 
-Modifications by Nathaniel Vaughn KELSO.
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
