@@ -153,10 +153,10 @@ isBaseLayer:true,sphericalMecator:true}
     
     var toposm = new OpenLayers.Layer.XYZ(
         "TopOSM",
-        ["http://c.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpeg",
-        "http://d.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpeg",
-        "http://a.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpeg",
-        "http://b.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpeg"],
+        ["http://a.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
+        "http://b.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
+        "http://c.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
+        "http://d.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png"],
         {wrapDateLine: true, visibility:false,
         numZoomLevels: 16, minZoom:0,
         isBaseLayer:true,//sphericalMecator:true
@@ -164,17 +164,30 @@ isBaseLayer:true,sphericalMecator:true}
     );
     
     var toposmfeature = new OpenLayers.Layer.XYZ(
-        "TopOSMOverlay",
+        "TopOSM Overlay",
         ["http://c.tile.stamen.com/toposm-features/${z}/${x}/${y}.png",
         "http://d.tile.stamen.com/toposm-features/${z}/${x}/${y}.png",
         "http://a.tile.stamen.com/toposm-features/${z}/${x}/${y}.png",
         "http://b.tile.stamen.com/toposm-features/${z}/${x}/${y}.png"],
          {wrapDateLine: true, visibility:false,
     buffer: 1,numZoomLevels: 16, minZoom:0,
-    isBaseLayer:false,sphericalMecator:true}
+    isBaseLayer:false//,sphericalMecator:true
+    }
     );
     
-    var cyclelandscape = new OpenLayers.Layer.OSM(
+    var toposmcontour = new OpenLayers.Layer.XYZ(
+        "TopOSM Contours",
+        ["http://a.tile.stamen.com/toposm-contours/${z}/${x}/${y}.png",
+        "http://b.tile.stamen.com/toposm-contours/${z}/${x}/${y}.png",
+        "http://c.tile.stamen.com/toposm-contours/${z}/${x}/${y}.png",
+        "http://d.tile.stamen.com/toposm-contours/${z}/${x}/${y}.png"],
+         {//wrapDateLine: true, visibility:false,
+    buffer: 1,numZoomLevels: 16, minZoom:0,
+    isBaseLayer:false//,sphericalMecator:true
+    }
+    );
+    
+    var cyclelandscape = new OpenLayers.Layer.XYZ(
         "OpenCyclemapMap",
         "http://tile3.opencyclemap.org/landscape/${z}/${x}/${y}.png",
     {wrapDateLine: true, visibility:false,
@@ -182,18 +195,18 @@ isBaseLayer:true,sphericalMecator:true}
     isBaseLayer:true,sphericalMecator:true}
     );
     
-    var MAX_RESOLUTION = 3276.8
-    var LAYER_EXTENT = new OpenLayers.Bounds( -256 * MAX_RESOLUTION, 1024 * MAX_RESOLUTION, 256 * MAX_RESOLUTION, 1536 * MAX_RESOLUTION)
-    var sps = new OpenLayers.Layer.XYZ("SPS",
-	    "http://tiles.closedcontour.com/sps/v2/${z}/${x}/${y}.jpg",
-	{
+    //var MAX_RESOLUTION = 3276.8
+    //var LAYER_EXTENT = new OpenLayers.Bounds( -256 * MAX_RESOLUTION, 1024 * MAX_RESOLUTION, 256 * MAX_RESOLUTION, 1536 * MAX_RESOLUTION)
+    //var sps = new OpenLayers.Layer.XYZ("SPS",
+	//    "http://tiles.closedcontour.com/sps/v2/${z}/${x}/${y}.jpg",
+	//{
 		//maxExtent: LAYER_EXTENT,
 		//maxResolution: MAX_RESOLUTION / 4,
 		//numZoomLevels: 9,
 		//projection: "SPS.CLOSEDCONTOUR.COM",
 		//units: "m",
-	}
-    );
+	//}
+    //);
     
     //Must alias 900913 to 3875 for usgs naip to work
     aliasproj = new OpenLayers.Projection("EPSG:3857");
@@ -203,11 +216,10 @@ isBaseLayer:true,sphericalMecator:true}
 	map2.addLayer(gphy);
 	map3.addLayer(cyclelandscape);
 	map4.addLayer(toposm);
-	map4.addLayer(toposmfeature);
-
-	center =  startpoint.transform(
-	new OpenLayers.Projection("EPSG:4326"),
-	map1.getProjectionObject());           
+	//map4.addLayer(toposmfeature);
+    map4.addLayer(toposmcontour);
+    
+	center =  startpoint.transform(new OpenLayers.Projection("EPSG:4326"), map1.getProjectionObject());           
 	map1.setCenter(center,12);
 	map2.setCenter(center,12);
 	map3.setCenter(center,12);
@@ -296,7 +308,7 @@ function outsideMap(site) {
 			break;
 		case 'toposm':
 			//http://www.toposm.com/us/index.html?zoom=8&lat=39.25&lon=-98&layers=B0
-			openurl="http://www.toposm.com/us/index.html?&zoom="+map1.zoom+"&lat="+center.lat+"&lon="+center.lon+"&layers=B0";
+			openurl="http://www.toposm.com/us/index.html?&zoom="+map1.zoom+"&lat="+center.lat+"&lon="+center.lon+"&layers=B0TF";
 			break;
 		case 'none':
 			openurl = "";		
