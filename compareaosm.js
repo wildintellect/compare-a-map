@@ -97,7 +97,10 @@ map5 = new OpenLayers.Map( 'map5',options);
 	
     var watercolor = new OpenLayers.Layer.XYZ(
     "Water Color",
-    ["http://169.237.167.64/tilestache/watercolor/${z}/${x}/${y}.png"],
+    [//"http://169.237.167.64/tilestache/watercolor/${z}/${x}/${y}.png"
+    "http://a.tile.stamen.com/watercolor/${z}/${x}/${y}.png",
+    "http://b.tile.stamen.com/watercolor/${z}/${x}/${y}.png"
+    ],
     {wrapDateLine: true, enabled:false,
     buffer: 1,numZoomLevels: 16, minZoom:4,
     isBaseLayer:true,sphericalMecator:true}
