@@ -262,8 +262,8 @@ function sync(test){
 }
 
 function recenter(wgscenter){
-	map5.setCenter(wgscenter,10);
-	map5.setCenter(wgscenter,12);
+	//map5.setCenter(wgscenter,10);
+	//map5.setCenter(wgscenter,12);
 	var sphmr_center = wgscenter.transform(
 	new OpenLayers.Projection("EPSG:4326"),map1.getProjectionObject());
 	map1.setCenter(sphmr_center,12);
