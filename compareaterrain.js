@@ -82,7 +82,7 @@ map1 = new OpenLayers.Map( 'map1',options);
 map2 = new OpenLayers.Map( 'map2',options);
 map3 = new OpenLayers.Map( 'map3',options);
 map4 = new OpenLayers.Map( 'map4',options);
-//map5 = new OpenLayers.Map( 'map5',options1);
+map5 = new OpenLayers.Map( 'map5',options);
 
 
 //Layers
@@ -195,6 +195,17 @@ isBaseLayer:true,sphericalMecator:true}
     isBaseLayer:true,sphericalMecator:true}
     );
     
+     var natgeo = new OpenLayers.Layer.XYZ( 
+        "National Geographic",
+        'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/${z}/${y}/${x}.jpg',
+        {numZoomLevels: 16,
+        isBaseLayer:true,//sphericalMecator:true
+        }
+    );
+     
+
+
+
     //var MAX_RESOLUTION = 3276.8
     //var LAYER_EXTENT = new OpenLayers.Bounds( -256 * MAX_RESOLUTION, 1024 * MAX_RESOLUTION, 256 * MAX_RESOLUTION, 1536 * MAX_RESOLUTION)
     //var sps = new OpenLayers.Layer.XYZ("SPS",
@@ -218,20 +229,21 @@ isBaseLayer:true,sphericalMecator:true}
 	map4.addLayer(toposm);
 	//map4.addLayer(toposmfeature);
     map4.addLayer(toposmcontour);
-    
+    map5.addLayer(natgeo);    
+
 	center =  startpoint.transform(new OpenLayers.Projection("EPSG:4326"), map1.getProjectionObject());           
 	map1.setCenter(center,12);
 	map2.setCenter(center,12);
 	map3.setCenter(center,12);
 	map4.setCenter(center,12);
-	//map5.setCenter(center,12);
+	map5.setCenter(center,12);
 
 	map1.events.register('moveend',map1,sync);
 	map2.events.register('moveend',map2,sync);
 	map3.events.register('moveend',map3,sync);
 	map4.events.register('moveend',map4,sync);
-	//map5.events.register('moveend',map5,syncWGS)
-	
+    map5.events.register('moveend',map5,sync);
+		
 	map1.events.register('zoomend',map1,sync);
 	
 }
@@ -249,15 +261,10 @@ function sync(test){
 		}
 	var newzoom = map1.getZoomForResolution(map1.getResolution());			
 	map1.setCenter(sphm_center, newzoom);			
-	map2.setCenter(sphm_center, newzoom-1);
+	map2.setCenter(sphm_center, newzoom);
 	map3.setCenter(sphm_center, newzoom);
 	map4.setCenter(sphm_center, newzoom);
-	//if(newzoom<16){
-	//	map5.setCenter(newcenter, newzoom);
-	//}
-	//else{
-		//TODO: blank map when not available
-	//}
+    map5.setCenter(sphm_center, newzoom);
 	test=0;
 }
 
@@ -309,6 +316,10 @@ function outsideMap(site) {
 		case 'toposm':
 			//http://www.toposm.com/us/index.html?zoom=8&lat=39.25&lon=-98&layers=B0
 			openurl="http://www.toposm.com/us/index.html?&zoom="+map1.zoom+"&lat="+center.lat+"&lon="+center.lon+"&layers=B0TF";
+			break;
+        case 'natgeo':
+			//?
+			openurl="http://www.arcgis.com/home/item.html?id=b9b1b422198944fbbd5250b3241691b6";
 			break;
 		case 'none':
 			openurl = "";		
