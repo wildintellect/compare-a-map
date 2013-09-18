@@ -129,13 +129,13 @@ isBaseLayer:true,sphericalMecator:true}
 		"Google Hybrid",
 		{type: google.maps.MapTypeId.HYBRID, numZoomLevels: 22, visibility: false}
 	);
-	var yahooLayer = new OpenLayers.Layer.Yahoo( "Yahoo");
-	var yahoosat = new OpenLayers.Layer.Yahoo(
-        "Yahoo Satellite",
-        {'type': YAHOO_MAP_SAT, 
+	//var yahooLayer = new OpenLayers.Layer.Yahoo( "Yahoo");
+	//var yahoosat = new OpenLayers.Layer.Yahoo(
+    //    "Yahoo Satellite",
+    //    {'type': YAHOO_MAP_SAT, 
 	  //sphericalMercator: true
-	  }
-    	);
+	//  }
+    //	);
     var usgsNAIP = new OpenLayers.Layer.WMS("NAIP",
         "http://raster.nationalmap.gov/ArcGIS/services/Orthoimagery/USGS_EDC_Ortho_NAIP/ImageServer/WMSServer?",
         {layers:'0',isBaseLayer:true,//sphericalMercator:true

@@ -83,7 +83,7 @@ map1 = new OpenLayers.Map( 'map1',options);
 map2 = new OpenLayers.Map( 'map2',options);
 map3 = new OpenLayers.Map( 'map3',options);
 map4 = new OpenLayers.Map( 'map4',options);
-map5 = new OpenLayers.Map( 'map5',options1);
+//map5 = new OpenLayers.Map( 'map5',options1);
 
 	//var external_control = new OpenLayers.Control.PanZoomBar({
 //	div: document.getElementById('external_control') });
@@ -126,14 +126,14 @@ map5 = new OpenLayers.Map( 'map5',options1);
 		"Google Hybrid",
 		{type: google.maps.MapTypeId.HYBRID, numZoomLevels: 22, visibility: false}
 	);
-	yahooLayer = new OpenLayers.Layer.Yahoo( "Yahoo");
+	//yahooLayer = new OpenLayers.Layer.Yahoo( "Yahoo");
 
 
 	map1.addLayer(osm);
 	map2.addLayer(road);
 	map3.addLayer(mapquest);
 	map4.addLayer(gmap);
-	map5.addLayer(yahooLayer);
+	//map5.addLayer(yahooLayer);
 
 	center =  startpoint.transform(
 	    new OpenLayers.Projection("EPSG:4326"),
@@ -142,7 +142,7 @@ map5 = new OpenLayers.Map( 'map5',options1);
 	map2.setCenter(center,12-1);
 	map3.setCenter(center,12);
 	map4.setCenter(center,12);
-	map5.setCenter(new OpenLayers.LonLat(-121.73626,38.55515),12);
+	//map5.setCenter(new OpenLayers.LonLat(-121.73626,38.55515),12);
 
 	map1.events.register('moveend',map1,sync);
 	map2.events.register('moveend',map2,sync);
@@ -156,9 +156,9 @@ map5 = new OpenLayers.Map( 'map5',options1);
 
 function sync(test){
 	if(test==1){
-		var sphm_center = map5.getExtent().getCenterLonLat().transform(
-        new OpenLayers.Projection("EPSG:4326"),map1.getProjectionObject());
-		var newcenter = map5.getExtent().getCenterLonLat();
+		//var sphm_center = map5.getExtent().getCenterLonLat().transform(
+       // new OpenLayers.Projection("EPSG:4326"),map1.getProjectionObject());
+		//var newcenter = map5.getExtent().getCenterLonLat();
 		}
 	else{
 		var sphm_center = this.getExtent().getCenterLonLat();
@@ -171,7 +171,7 @@ function sync(test){
 	map3.setCenter(sphm_center, newzoom);
 	map4.setCenter(sphm_center, newzoom);
 	if(newzoom<16){
-		map5.setCenter(newcenter, newzoom);
+		//map5.setCenter(newcenter, newzoom);
 	}
 	else{
 		//TODO: blank map when not available
@@ -191,8 +191,8 @@ function syncWGS(){
 }
 
 function recenter(wgscenter){
-	map5.setCenter(wgscenter,10);
-	map5.setCenter(wgscenter,12);
+	//map5.setCenter(wgscenter,10);
+	//map5.setCenter(wgscenter,12);
 	var sphmr_center = wgscenter.transform(
 	new OpenLayers.Projection("EPSG:4326"),map1.getProjectionObject());
 	map1.setCenter(sphmr_center,12);
