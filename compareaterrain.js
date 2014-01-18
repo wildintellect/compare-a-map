@@ -153,10 +153,10 @@ isBaseLayer:true,sphericalMecator:true}
     
     var toposm = new OpenLayers.Layer.XYZ(
         "TopOSM",
-        ["http://a.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
-        "http://b.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
-        "http://c.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png",
-        "http://d.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.png"],
+        ["http://a.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpg",
+        "http://b.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpg",
+        "http://c.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpg",
+        "http://d.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpg"],
         {wrapDateLine: true, visibility:false,
         numZoomLevels: 16, minZoom:0,
         isBaseLayer:true,//sphericalMecator:true
