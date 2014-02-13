@@ -14,7 +14,7 @@ Maps provided by Bing, Google, Yahoo, Mapquest, Stamen Designs, OpenCycleMap, US
 
 ##License
 
-By **Alex Mandel** Copyright 2011-2012. 
+By **Alex Mandel** Copyright 2011-2014. 
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
