@@ -141,7 +141,7 @@ isBaseLayer:true,sphericalMecator:true}
 	  //sphericalMercator: true
 	//  }
     //	);
-    var usgsNAIP = new OpenLayers.Layer.WMS("NAIP","http://raster.nationalmap.gov/ArcGIS/services/Orthoimagery/USGS_EDC_Ortho_NAIP/ImageServer/WMSServer?",
+    var usgsNAIP = new OpenLayers.Layer.WMS("NAIP","http://isse.cr.usgs.gov/arcgis/services/Orthoimagery/USGS_EROS_Ortho_NAIP/ImageServer/WMSServer",
         {layers:'0',isBaseLayer:true,//sphericalMercator:true
         }
     );
