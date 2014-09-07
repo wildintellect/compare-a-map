@@ -158,7 +158,7 @@ isBaseLayer:true,sphericalMecator:true}
         "http://c.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpg",
         "http://d.tile.stamen.com/toposm-color-relief/${z}/${x}/${y}.jpg"],
         {wrapDateLine: true, visibility:false,
-        numZoomLevels: 16, minZoom:0,
+        numZoomLevels: 18, minZoom:0,
         isBaseLayer:true,//sphericalMecator:true
         }
     );
@@ -170,7 +170,7 @@ isBaseLayer:true,sphericalMecator:true}
         "http://a.tile.stamen.com/toposm-features/${z}/${x}/${y}.png",
         "http://b.tile.stamen.com/toposm-features/${z}/${x}/${y}.png"],
          {wrapDateLine: true, visibility:false,
-    buffer: 1,numZoomLevels: 16, minZoom:0,
+    buffer: 1,numZoomLevels: 18, minZoom:0,
     isBaseLayer:false//,sphericalMecator:true
     }
     );
@@ -182,7 +182,7 @@ isBaseLayer:true,sphericalMecator:true}
         "http://c.tile.stamen.com/toposm-contours/${z}/${x}/${y}.png",
         "http://d.tile.stamen.com/toposm-contours/${z}/${x}/${y}.png"],
          {//wrapDateLine: true, visibility:false,
-    buffer: 1,numZoomLevels: 16, minZoom:0,
+    buffer: 1,numZoomLevels: 18, minZoom:0,
     isBaseLayer:false//,sphericalMecator:true
     }
     );
@@ -198,7 +198,7 @@ isBaseLayer:true,sphericalMecator:true}
      var natgeo = new OpenLayers.Layer.XYZ( 
         "National Geographic",
         'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/${z}/${y}/${x}.jpg',
-        {numZoomLevels: 16,
+        {numZoomLevels: 18,
         isBaseLayer:true,//sphericalMecator:true
         }
     );
@@ -278,6 +278,7 @@ function recenter(wgscenter){
 }
 
 /*JQuery Section*/
+/* TODO: Google is stopping at 15?*/
 $(function() {
 	$( "#slider" ).slider({
 		value:12,
