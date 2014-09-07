@@ -1,0 +1,147 @@
+/*
+ * Fancy style sheet for map comparison tool.
+ * Alex Mandel 2011
+ */
+/*@import oldefaults.css*/
+
+body{
+	/*background:tan;*/
+}
+
+.item {
+	/*float:left;*/
+	margin:3px;
+	background: black;
+    padding: 16px 12px 12px 12px;
+    color: white;
+}
+
+.map {
+	width:300px;
+	height:200px;
+	padding-top:5px;
+}
+
+#header {
+float:left;
+}
+
+#loc {
+	width:320px;}
+
+#header li {
+	/*float:left;*/
+	padding: 4px 6px 4px 6px;
+}
+
+#geocoder {
+}
+
+#panel {
+}
+
+.list {
+	display:inline;
+	list-style-type:none;
+}
+
+#mapcontain .list {
+	background:#D0F29D;
+}
+
+#keeper {
+	/*float:left;*/
+	width: 96%;
+    margin: 0px 5px 0px 5px;
+    padding-top: 20px; 
+	padding-bottom: 20px; 
+	padding-left:auto;
+	padding-right:auto;
+}
+
+/*TODO: move the attribution to below the map frame*/
+.olControlAttribution {
+    padding-top: 250px;
+    padding-left: 150px;
+}
+
+
+.olControlZoomInItemInactive {
+    background:url(http://dev.openlayers.org/releases/OpenLayers-2.8/img/zoom-plus-mini.png) no-repeat;
+    border:2px solid #232323;
+    float:left;
+    height:18px;
+    margin-right:5px;
+    width:18px;
+}
+.olControlZoomOutItemInactive {
+    background:url(http://dev.openlayers.org/releases/OpenLayers-2.8/img/zoom-minus-mini.png) no-repeat;
+    border:2px solid #232323;
+    float:left;
+    height:18px;
+    margin-right:5px;
+    width:18px;
+}
+
+
+
+/*Copied from OL */
+.olControlPanPanel {
+    left: 5px;
+    top: 10px;
+}
+.olControlPanPanel div {
+    background-image: url("img/pan-panel.png");
+    cursor: pointer;
+    height: 18px;
+    position: absolute;
+    width: 18px;
+}
+.olControlPanPanel .olControlPanNorthItemInactive {
+    background-position: 0 0;
+    left: 9px;
+    top: 0;
+}
+.olControlPanPanel .olControlPanSouthItemInactive {
+    background-position: 18px 0;
+    left: 9px;
+    top: 36px;
+}
+.olControlPanPanel .olControlPanWestItemInactive {
+    background-position: 0 18px;
+    left: 0;
+    position: absolute;
+    top: 18px;
+}
+.olControlPanPanel .olControlPanEastItemInactive {
+    background-position: 18px 18px;
+    left: 18px;
+    top: 18px;
+}
+.olControlZoomPanel {
+    left: 14px;
+    top: 71px;
+}
+.olControlZoomPanel div {
+    background-image: url("img/zoom-panel.png");
+    cursor: pointer;
+    height: 18px;
+    position: absolute;
+    width: 18px;
+}
+.olControlZoomPanel .olControlZoomInItemInactive {
+    background-position: 0 0;
+    left: 0;
+    top: 0;
+}
+.olControlZoomPanel .olControlZoomToMaxExtentItemInactive {
+    background-position: 0 -18px;
+    left: 0;
+    top: 18px;
+}
+.olControlZoomPanel .olControlZoomOutItemInactive {
+    background-position: 0 18px;
+    left: 0;
+    top: 36px;
+}
+

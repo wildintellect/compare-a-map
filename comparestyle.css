@@ -1,0 +1,154 @@
+/* Fancy style sheet for map comparison tool.
+Compare A Map OSM js
+Alex Mandel Copyright 2012
+tech@wildintellect.com
+http://blog.wildintellect.com
+
+Live code can be seen on http://compareamap.org
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+*/
+
+
+
+#info{
+	font-size: .95em;
+    padding: 0px 10px 10px 10px;
+	width: 300px;
+	height: 256px;
+} 
+
+#info h2{
+    font-size: 160%;
+}
+
+#info h3{
+	font-size: .75em;
+}
+
+.item {
+	float:left;
+	margin:1px;
+	background: #2D2D2D;
+    padding: 16px 10px 10px 10px;
+    color: white;
+	width: 300px;
+	height: 240px;
+}
+
+.item a {
+	color:white;
+}
+
+.map {
+	width:300px;
+	height:200px;
+	padding-top:5px;
+}
+
+#header {
+}
+
+#loc {
+}
+
+#geocoder {
+}
+
+#panel {
+}
+
+#keeper {
+	display:inline;
+	list-style-type:none;
+}
+
+#content.osm{
+	background: none repeat scroll 0 0 #ebac8d;
+}
+#content.hybrid{
+	background: none repeat scroll 0 0 #65953C;
+}
+#content.cluster{
+	background: none repeat scroll 0 0 #AF6046;
+}
+#content.terrain{
+	background: none repeat scroll 0 0 #db8deb;
+}
+
+#content.photo{
+	background: none repeat scroll 0 0 #8C9CEA;
+}
+#content{
+	background: none repeat scroll 0 0 #A4E271;
+    margin: 0 auto;
+    width: 990px;
+    padding-top: 20px;
+    padding-left: 24px;
+	padding-bottom:20px;
+}
+
+
+
+#mapcontain {
+	height:540px;
+	margin: auto;
+	padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+#keeper {
+	/*float:left;*/
+	/*width: 96%;
+    margin: 0px 5px 0px 5px;
+    padding-top: 20px; 
+	padding-bottom: 20px; 
+	padding-left:auto;
+	padding-right:auto;*/
+}
+
+#about {
+	font-size: .8em;
+	background:#2D2D2D;
+	color:white;
+	width: 946px;
+    padding: 10;
+}
+
+#about a{
+	color:#6BA4F9;
+}
+
+#zoom {
+	background:#2D2D2D;
+	width:50px;
+	border:none;
+	color:orange;
+}
+
+#slider {
+	margin-top: 5px;
+    background: #BFBFBF;
+    border-color: white;
+	margin-left: -10px;
+    margin-right: 10px;
+}
+/*TODO: move the attribution to below the map frame*/
+.olControlAttribution {
+    padding-top: 250px;
+    padding-left: 150px;
+}
+
+#external_control{
+	position:relative;
+	height: 180px;
+	font-size: .9em;
+}
+#OpenLayer_Control_PanZoomBar_ZoombarOpenLayers.Map_11{
+
+}
