@@ -38,7 +38,9 @@ Unless required by applicable law or agreed to in writing, software distributed 
 		<ol id="keeper" class="list">
 			<li class="item" id="info">
 					<h2>Compare-A-Map </h2>
-                    <div id="title">
+                    <ol id="instruct">
+                    <li>
+                    <div id="title"> Pick a Map:
                         <select id="mapList" onchange="switchMap()">
                             <option>Satellite</option>
                             <option>Street</option>
@@ -46,20 +48,22 @@ Unless required by applicable law or agreed to in writing, software distributed 
                             <option>OpenStreetMap</option>
                         </select>
                     </div>
-                    </br>
+                    </li>
+                    
 					<!--<h3>Satellite</h3>-->					
 					<!--<form onsubmit="doBasicSearchClick()">-->
 					<div id="geocoder">
-					<ol id="instruct">
+					
 						<li>Enter a Place Name (City,State):<input type="text" name="location" id="loc" onkeydown="if (event.keyCode == 13) doBasicSearchClick()"/></li>
 						<li>Click <button id="find" onclick="doBasicSearchClick()">Find</button> to recenter the maps</li>
 					<!--</form>-->
-						<li>Click and drag any map to pan.*</li>
-						<li>Adjust zoom: <input type="text" id="zoom">
+						<li>Click and drag any map to pan.</li>
+						<li>Adjust zoom*: <input type="text" id="zoom">
 							<div id="slider"></div>
 						</li>
-					</ol>
 					</div>
+					</ol>
+					
 					
 					<div id="panel"></div>
 					
@@ -105,7 +109,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 			<a href="http://www.opencyclemap.org/">OpenCycleMap</a>,
 			and <a href="http://www.openstreetmap.org/">OpenStreetMap</a>
 		</br> 
-		</br>* Yahoo panning does not currently work.
+		</br>* Max zoom is currently 16.
 		</div>
 </div>
 	

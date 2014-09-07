@@ -204,7 +204,7 @@ $(function() {
 	$( "#slider" ).slider({
 		value:12,
 		min: 0,
-		max: 16,
+		max: 18,
 		step: 1,
 		slide: function( event, ui ) {
 			$( "#zoom" ).val(ui.value );

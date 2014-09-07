@@ -102,7 +102,7 @@ map5 = new OpenLayers.Map( 'map5',options);
     "http://b.tile.stamen.com/watercolor/${z}/${x}/${y}.png"
     ],
     {wrapDateLine: true, enabled:false,
-    buffer: 1,numZoomLevels: 16, minZoom:4,
+    buffer: 1,numZoomLevels: 18, minZoom:4,
     isBaseLayer:true,sphericalMecator:true}
     );
 
@@ -193,11 +193,12 @@ function recenter(wgscenter){
 }
 
 /*JQuery Section*/
+/* TODO: Only OSM and Mapquest go to 18*/
 $(function() {
 	$( "#slider" ).slider({
 		value:12,
 		min: 0,
-		max: 16,
+		max: 18,
 		step: 1,
 		slide: function( event, ui ) {
 			$( "#zoom" ).val(ui.value );

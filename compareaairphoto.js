@@ -192,12 +192,12 @@ function sync(test){
 	map2.setCenter(sphm_center, newzoom-1);
 	map3.setCenter(sphm_center, newzoom);
 	map4.setCenter(sphm_center, newzoom);
-	if(newzoom<16){
+	//if(newzoom<16){
 		//map5.setCenter(newcenter, newzoom);
-	}
-	else{
+	//}
+	//else{
 		//TODO: blank map when not available
-	}
+	//}
 	test=0;
 }
 
@@ -222,11 +222,12 @@ function recenter(wgscenter){
 }
 
 /*JQuery Section*/
+/* TODO: Everyone stopping at 15?*/
 $(function() {
 	$( "#slider" ).slider({
 		value:12,
 		min: 0,
-		max: 16,
+		max: 15,
 		step: 1,
 		slide: function( event, ui ) {
 			$( "#zoom" ).val(ui.value );
