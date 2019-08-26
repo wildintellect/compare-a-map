@@ -1,6 +1,7 @@
 # Generate compare a map using mapview
 library(mapview)
 library(leafsync)
+library(leaflet)
 
 center <- c(x=-121.73626,y=38.55515)
 m1 <- mapView(map.types = "Esri.WorldImagery")
